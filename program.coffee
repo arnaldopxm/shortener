@@ -3,7 +3,7 @@ url = require 'url'
 path = require 'path'
 mongo = require('mongodb').MongoClient
 app = express()
-uri = 'mongodb://arnaldopxm:'+ '130796' + '@ds137197.mlab.com:37197/freecodecamp'
+uri = process.env.URL
 host = 'https://petal-shrimp.glitch.me/'
 
 app.set 'view engine', 'pug'
@@ -68,5 +68,5 @@ app.get '/new/*', (req,res) ->
 app.get '*', (req,res) ->
   res.render '404'
 
-listener = app.listen 50532, ->
+listener = app.listen process.env.PORT, ->
   console.log 'Your app is listening on port ' + listener.address().port
